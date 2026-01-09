@@ -1,0 +1,57 @@
+name: Deploy to Server
+
+on:
+    push:
+        branches:
+            - main
+jobs:
+    deploy:
+        runs-on: self-hosted
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Log - Starting deployment
+              run: |
+                  echo "=========================================="
+                  echo "Starting deployment for branch: ${{ github.ref_name }}"
+                  echo "=========================================="
+
+            - name: Clean deployment directory
+              run: |
+                  echo "DELETING EVERYTHING in ~/deployments/portfolio..."
+                  rm -rf ~/deployments/portfolio/*
+                  echo "Directory completely removed!"
+
+            - name: Copy new files
+              run: |
+                  echo "Copying new files from $GITHUB_WORKSPACE..."
+                  rsync -av --exclude='.git' --exclude='node_modules' --exclude='.github' \
+                    $GITHUB_WORKSPACE/ ~/deployments/portfolio/
+                  echo "Files copied successfully!"
+                  echo "Contents:"
+                  ls -la ~/deployments/portfolio/
+
+            - name: Install dependencies from scratch
+              run: |
+                  echo "Installing dependencies from scratch..."
+                  cd ~/deployments/portfolio
+                  npm ci --production
+                  echo "Dependencies installed!"
+
+            - name: Build React application
+              run: |
+                  echo "Building React application for production..."
+                  cd ~/deployments/portfolio
+                  npm install vite --save-dev --no-save
+                  npm run build -- --base=/dev/
+                  echo "Build completed!"
+
+            - name: Log - Deployment completed
+              run: |
+                  echo "=========================================="
+                  echo "✅ DEPLOYMENT COMPLETED"
+                  echo "📦 Files at: ~/deployments/portfolio/dist"
+                  echo "🌐 Live at: https://icdominguez.ddns.net/dev/"
+                  echo "=========================================="
