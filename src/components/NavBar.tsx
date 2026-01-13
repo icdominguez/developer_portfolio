@@ -1,16 +1,20 @@
 import { useState } from "react";
 import ChangeThemeButton from "./ChangeThemeButton";
 import DefaultButton from "./DefaultButton";
+import LanguageSelector from "./LanguageSelector/LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 export default function NavBar() {
     const [isMenuOpen, setMenuOpen] = useState(false);
 
+    const { t } = useTranslation();
+
     const links = [
-        { to: "home", label: "Home" },
-        { to: "about", label: "About" },
-        { to: "experience", label: "Experience" },
-        { to: "projects", label: "Projects" },
-        { to: "contact", label: "Contact" },
+        { to: "home", label: t("nav.home") },
+        { to: "about", label: t("nav.about") },
+        { to: "experience", label: t("nav.experience") },
+        { to: "projects", label: t("nav.projects") },
+        { to: "contact", label: t("nav.contact") },
     ];
 
     return (
@@ -38,11 +42,15 @@ export default function NavBar() {
                     ))}
 
                     <ChangeThemeButton />
+
+                    <LanguageSelector />
                 </div>
 
                 {/* Mobile buttons */}
                 <div className="md:hidden flex items-center gap-3">
                     <ChangeThemeButton />
+
+                    <LanguageSelector />
 
                     <DefaultButton
                         iconId={isMenuOpen ? "close-icon" : "menu-icon"}
