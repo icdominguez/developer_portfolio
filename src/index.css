@@ -11,3 +11,9 @@
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
 }
+
+@custom-variant dark (&:is(.dark *));
+
+html {
+    @apply scroll-smooth;
+}
