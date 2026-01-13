@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SPRITE_URL } from "../constants/paths";
 
 export default function ChangeThemeButton() {
     const [isDark, setIsDark] = useState(false);
@@ -20,7 +21,7 @@ export default function ChangeThemeButton() {
         >
             <svg className="w-6 h-6">
                 <use
-                    href={`/sprite.svg#${isDark ? "moon-icon" : "sun-icon"}`}
+                    href={`${SPRITE_URL}#${isDark ? "moon-icon" : "sun-icon"}`}
                 />
             </svg>
         </button>
