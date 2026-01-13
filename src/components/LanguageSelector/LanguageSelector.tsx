@@ -11,19 +11,19 @@ export default function LanguageSelector() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [selectedLang, setSelectedLang] = useState("en");
-    const dropdownRef = useRef(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-    const handleLanguageChange = (langCode) => {
+    const handleLanguageChange = (langCode: string) => {
         setSelectedLang(langCode);
         setIsOpen(false);
         i18n.changeLanguage(langCode);
     };
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event: MouseEvent) => {
             if (
                 dropdownRef.current &&
-                !dropdownRef.current.contains(event.target)
+                !dropdownRef.current.contains(event.target as Node)
             ) {
                 setIsOpen(false);
             }
@@ -34,9 +34,8 @@ export default function LanguageSelector() {
             document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    const currentLanguage = languages.find(
-        (lang) => lang.code === selectedLang
-    );
+    const currentLanguage =
+        languages.find((lang) => lang.code === selectedLang) ?? languages[0];
     return (
         <div ref={dropdownRef} className="relative flex flex-col items-center">
             <button
