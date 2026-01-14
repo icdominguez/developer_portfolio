@@ -30,5 +30,29 @@
       <path d="M18 6L6 18"></path>
       <path d="M6 6l12 12"></path>
     </symbol>
+
+    <!-- Send Icon -->
+    <symbol id="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 2L11 13"></path>
+      <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+    </symbol>
+
+    <!-- Email Icon -->
+    <symbol id="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+      <path d="M22 6L12 13L2 6"></path>
+    </symbol>
+
+    <!-- User Icon -->
+    <symbol id="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </symbol>
+
+    <!-- Chat Icon -->
+    <symbol id="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+    </symbol>
+
   </defs>
 </svg>
