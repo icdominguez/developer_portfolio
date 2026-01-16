@@ -38,6 +38,7 @@ const resources = {
                     serban: "Implementation of biometric solutions for mobile and web environments, including voice, signature, and recognition systems. Cross-functional work on frontend and backend, with a focus on the integration and robustness of Android solutions.",
                 },
             },
+            download_resume: "Download Resume (PDF)",
         },
     },
     es: {
@@ -76,6 +77,7 @@ const resources = {
                     serban: "Implementación de soluciones biométricas para entornos móviles y web, incluyendo sistemas de voz, firma y reconocimiento. Trabajo transversal en frontend y backend, con foco en la integración y robustez de las soluciones Android.",
                 },
             },
+            download_resume: "Descargar Curriculum (PDF)",
         },
     },
 };
