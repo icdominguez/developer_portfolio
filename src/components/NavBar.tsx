@@ -18,7 +18,7 @@ export default function NavBar() {
     ];
 
     return (
-        <nav className="fixed top-0 w-full pt-4 pb-4 bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50">
+        <nav className="sticky top-0 z-50 w-full pt-4 pb-4 bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50">
             <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
                 {/* Name */}
                 <h1
