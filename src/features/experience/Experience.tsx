@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import Timeline from "./timeline/Timeline";
 import { SectionTitle } from "../../components/SectionTitle";
+import DownloadResumeButton from "../../components/DownloadResumeButton";
 export default function Experience() {
     const { t } = useTranslation();
 
@@ -12,6 +13,8 @@ export default function Experience() {
             <SectionTitle title={t("nav.experience")} />
 
             <Timeline />
+
+            <DownloadResumeButton />
         </section>
     );
 }
