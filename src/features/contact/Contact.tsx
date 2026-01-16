@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SPRITE_URL } from "../../constants/paths";
 import { useTranslation, Trans } from "react-i18next";
+import { SectionTitle } from "../../components/SectionTitle";
 
 export default function Contact() {
     const { t } = useTranslation();
@@ -59,9 +60,7 @@ export default function Contact() {
             id="contact"
             className="flex flex-col items-center bg-slate-50/50 dark:bg-slate-900/50"
         >
-            <h1 className="text-4xl sm:text-6xl font-bold sm:text-left text-center pb-4">
-                {t("contact.do_you_like_my_work")}
-            </h1>
+            <SectionTitle title={t("nav.contact")} />
 
             <Trans
                 i18nKey="contact.have_a_project_in_mind"
