@@ -10,6 +10,43 @@
 
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
+
+    --animate-wave: wave 6s ease-in-out infinite;
+
+    @keyframes wave {
+        /* First wave */
+        0% {
+            transform: rotate(0deg);
+        }
+        10% {
+            transform: rotate(-15deg);
+        }
+        20% {
+            transform: rotate(15deg);
+        }
+
+        /* Second wave */
+        30% {
+            transform: rotate(-15deg);
+        }
+        40% {
+            transform: rotate(15deg);
+        }
+
+        /* Third wave */
+        50% {
+            transform: rotate(-15deg);
+        }
+        60% {
+            transform: rotate(15deg);
+        }
+
+        /* PAUSE - Keeps stopped from 70% to 100% */
+        70%,
+        100% {
+            transform: rotate(0deg);
+        }
+    }
 }
 
 @custom-variant dark (&:is(.dark *));

@@ -39,6 +39,7 @@ const resources = {
                 },
             },
             download_resume: "Download Resume (PDF)",
+            greeting: "Hi I'm",
         },
     },
     es: {
@@ -78,6 +79,7 @@ const resources = {
                 },
             },
             download_resume: "Descargar Curriculum (PDF)",
+            greeting: "Hola, soy",
         },
     },
 };
