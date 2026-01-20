@@ -17,6 +17,7 @@
     --color-terminal-orange: #af7c66;
 
     --animate-wave: wave 6s ease-in-out infinite;
+    --animate-marquee: marquee 20s linear infinite;
 
     @keyframes wave {
         /* First wave */
@@ -50,6 +51,15 @@
         70%,
         100% {
             transform: rotate(0deg);
+        }
+    }
+    @keyframes marquee {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100dvw);
         }
     }
 }

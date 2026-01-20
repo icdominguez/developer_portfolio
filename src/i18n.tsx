@@ -11,6 +11,13 @@ const resources = {
                 experience: "Experience",
                 contact: "Contact",
             },
+            about: {
+                marquee: {
+                    architecture: "Architecture",
+                    production: "Production",
+                    scalability: "Scalability",
+                },
+            },
             contact: {
                 do_you_like_my_work: "Do you like my work?",
                 your_name: "Your name",
@@ -50,6 +57,13 @@ const resources = {
                 projects: "Proyectos",
                 experience: "Experiencia",
                 contact: "Contacto",
+            },
+            about: {
+                marquee: {
+                    architecture: "Arquitectura",
+                    production: "Producción",
+                    scalability: "Escalabilidad",
+                },
             },
             contact: {
                 do_you_like_my_work: "¿Te ha gustado mi trabajo?",
