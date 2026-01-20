@@ -11,6 +11,10 @@ const resources = {
                 experience: "Experience",
                 contact: "Contact",
             },
+            home: {
+                description:
+                    "I build high-quality native Android and iOS applications, developing the backend as well to deliver true end-to-end solutions. I focus on clean, scalable code, on-time delivery, and products that get real results",
+            },
             about: {
                 marquee: {
                     architecture: "Architecture",
@@ -45,7 +49,7 @@ const resources = {
                     serban: "Implementation of biometric solutions for mobile and web environments, including voice, signature, and recognition systems. Cross-functional work on frontend and backend, with a focus on the integration and robustness of Android solutions.",
                 },
             },
-            download_resume: "Download Resume (PDF)",
+            download_resume: "Resume",
             greeting: "Hi I'm",
         },
     },
@@ -57,6 +61,10 @@ const resources = {
                 projects: "Proyectos",
                 experience: "Experiencia",
                 contact: "Contacto",
+            },
+            home: {
+                description:
+                    "Creo aplicaciones nativas de alta calidad para Android e iOS, desarrollando también el backend para ofrecer soluciones completas. Me centro en crear código limpio y escalable, cumplir con los plazos de entrega y crear productos que obtengan resultados reales.",
             },
             about: {
                 marquee: {
@@ -92,7 +100,7 @@ const resources = {
                     serban: "Implementación de soluciones biométricas para entornos móviles y web, incluyendo sistemas de voz, firma y reconocimiento. Trabajo transversal en frontend y backend, con foco en la integración y robustez de las soluciones Android.",
                 },
             },
-            download_resume: "Descargar Curriculum (PDF)",
+            download_resume: "Curriculum",
             greeting: "Hola, soy",
         },
     },
