@@ -5,7 +5,7 @@ export default function TypingText() {
     const [displayText, setDisplayText] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
 
-    const texts = ["Ismael Cordón", "Android Native Developer"];
+    const texts = ["Ismael Cordón", "Android & iOS Developer"];
 
     useEffect(() => {
         const currentText = texts[textIndex];
@@ -22,22 +22,22 @@ export default function TypingText() {
                     setTextIndex((prev) => (prev + 1) % texts.length);
                 } else if (isDeleting) {
                     setDisplayText(
-                        currentText.substring(0, displayText.length - 1)
+                        currentText.substring(0, displayText.length - 1),
                     );
                 } else {
                     setDisplayText(
-                        currentText.substring(0, displayText.length + 1)
+                        currentText.substring(0, displayText.length + 1),
                     );
                 }
             },
-            displayText === currentText ? pauseEnd : typingSpeed
+            displayText === currentText ? pauseEnd : typingSpeed,
         );
 
         return () => clearTimeout(timeout);
     }, [displayText, isDeleting, textIndex]);
 
     return (
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-8 leading-tight min-h-20 md:min-h-25 pt-4">
+        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-8 leading-tight min-h-20 md:min-h-25">
             <span className="bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 {displayText}
             </span>
