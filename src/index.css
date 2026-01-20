@@ -11,6 +11,11 @@
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
 
+    --color-terminal-bg: #1e1f23;
+    --color-terminal-blue: #66b2c0;
+    --color-terminal-green: #608768;
+    --color-terminal-orange: #af7c66;
+
     --animate-wave: wave 6s ease-in-out infinite;
 
     @keyframes wave {
