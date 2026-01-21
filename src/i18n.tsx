@@ -21,6 +21,14 @@ const resources = {
                     production: "Production",
                     scalability: "Scalability",
                 },
+                years_of_experience: "Years of experience",
+                apps_developed: "Apps developed",
+                apps_in_store: "Apps in store",
+                description: `I’m a mobile developer with <1> over 5 years of experience</1> building native Android applications, consistently working across backend systems throughout my career. 
+                    
+                    My core expertise is <1>native mobile development</1>, and I’m currently expanding my work into iOS while focusing on freelance projects. 
+                    
+                    I design and build products <1> end-to-end</1> from database modeling and server setup to delivering production-ready mobile apps. I focus on <1>scalable architecture, clean code, and turning ideas into reliable, real-world applications.</1>`,
             },
             contact: {
                 do_you_like_my_work: "Do you like my work?",
@@ -34,7 +42,7 @@ const resources = {
                 feel_free_to_reach_out:
                     "Feel free to reach out, I'm always open to connect!",
                 have_a_project_in_mind:
-                    "Have a <1>project in mind</1>, or a <3>question</3>?",
+                    "Have a <1>project in mind</1>, or a <1>question</1>?",
             },
             experience: {
                 descriptions: {
@@ -72,6 +80,14 @@ const resources = {
                     production: "Producción",
                     scalability: "Escalabilidad",
                 },
+                years_of_experience: "Años de experiencia",
+                apps_developed: "Apps desarrolladas",
+                apps_in_store: "Apps en la tienda",
+                description: `Soy desarrollador móvil <1> con más de 5 años de experiencia</1> creando aplicaciones nativas para Android, trabajando consistentemente en sistemas backend durante toda mi carrera.
+
+                    Mi especialidad principal es <1>desarrollo móvil nativo</1>, y actualmente estoy expandiendo mi trabajo hacia iOS mientras me enfoco en proyectos freelance.
+
+                    Diseño y construyo productos <1>end-to-end</1> desde el modelado de base de datos y la configuración del servidor hasta la entrega de aplicaciones móviles listas para producción. Me enfoco en <1>arquitectura escalable, código limpio y transformar ideas en aplicaciones confiables del mundo real.</1>`,
             },
             contact: {
                 do_you_like_my_work: "¿Te ha gustado mi trabajo?",
@@ -85,7 +101,7 @@ const resources = {
                 feel_free_to_reach_out:
                     "No dudes en ponerte en contacto conmigo, ¡siempre estoy dispuesto a conectar!",
                 have_a_project_in_mind:
-                    "Tienes un <1>proyecto en mente</1>, o alguna <3>pregunta</3>?",
+                    "Tienes un <1>proyecto en mente</1>, o alguna <1>pregunta</1>?",
             },
             experience: {
                 descriptions: {

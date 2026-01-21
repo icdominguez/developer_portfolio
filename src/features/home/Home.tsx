@@ -22,7 +22,7 @@ export default function Home() {
     return (
         <section id="home">
             <div className="w-full flex items-center justify-center pt-20 pb-20">
-                <div className="w-full max-w-7xl grid md:grid-cols-[1.1fr_0.9fr] items-start md:px-8">
+                <div className="w-full max-w-7xl grid md:grid-cols-[1.1fr_0.9fr] items-start px-4 md:px-8">
                     {/* Left Column */}
                     <div className="w-full flex flex-col items-center md:items-start">
                         <div className="flex flex-row items-center">
@@ -38,7 +38,7 @@ export default function Home() {
                             <TypingText />
                         </div>
 
-                        <p className="text-md md:text-lg text-center md:text-start text-slate-600 dark:text-slate-300 leading-relaxed mb-12 max-w-2xl pr-4">
+                        <p className="text-md md:text-lg text-center md:text-start text-slate-600 dark:text-slate-300 leading-relaxed mb-12 max-w-2xl">
                             {t("home.description")}
                         </p>
 
