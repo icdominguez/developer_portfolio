@@ -17,7 +17,7 @@ export default function Contact() {
     });
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
         const { name, value } = e.target;
         setFormData({
@@ -56,19 +56,13 @@ export default function Contact() {
     const isSubmitDisabled = !isFormComplete || !isEmailValid;
 
     return (
-        <section
-            id="contact"
-            className="flex flex-col items-center bg-slate-50/50 dark:bg-slate-900/50"
-        >
+        <section id="contact" className="flex flex-col items-center pb-20">
             <SectionTitle title={t("nav.contact")} />
 
             <Trans
                 i18nKey="contact.have_a_project_in_mind"
                 components={{
                     1: (
-                        <span className="text-blue-600 dark:text-blue-400 font-bold" />
-                    ),
-                    3: (
                         <span className="text-blue-600 dark:text-blue-400 font-bold" />
                     ),
                 }}
@@ -80,7 +74,7 @@ export default function Contact() {
             </span>
 
             <form
-                className="w-full max-w-xl mx-auto px-4 py-4 sm:px-0 pt-4 pb-12"
+                className="w-full max-w-xl mx-auto px-4 sm:px-0 pt-4"
                 onSubmit={handleSubmit}
             >
                 <div className="w-full flex flex-col pb-4">

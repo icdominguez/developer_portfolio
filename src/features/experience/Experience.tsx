@@ -8,7 +8,7 @@ export default function Experience() {
     return (
         <section
             id="experience"
-            className="flex flex-col items-center justify-center pt-12 pb-12"
+            className="flex flex-col items-center justify-center pb-20"
         >
             <SectionTitle title={t("nav.experience")} />
 

@@ -3,6 +3,7 @@ import ChangeThemeButton from "./ChangeThemeButton";
 import DefaultButton from "./DefaultButton";
 import LanguageSelector from "./LanguageSelector/LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { SPRITE_URL } from "../constants/paths";
 
 export default function NavBar() {
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -21,13 +22,22 @@ export default function NavBar() {
         <nav className="sticky top-0 z-50 w-full pt-4 pb-4 bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50">
             <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
                 {/* Name */}
-                <h1
-                    className="cursor-pointer text-xl font-bold 
-                    bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent 
-                    hover:underline hover:underline-offset-4 hover:decoration-cyan-500"
-                >
-                    IC
-                </h1>
+
+                <div className="flex flex-row items-center">
+                    <svg className="w-8 h-6 bg-gray-200 dark:bg-slate-800 border-transparent rounded-md mr-2 text-blue-600">
+                        <use href={`${SPRITE_URL}#terminal-icon`} />
+                    </svg>
+
+                    <h1
+                        className="cursor-pointer text-xl font-bold 
+                    hover:underline hover:underline-offset-4 hover:decoration-blue-600"
+                    >
+                        <span className="bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent ">
+                            ICD
+                        </span>
+                        <span>OMINGUEZ</span>
+                    </h1>
+                </div>
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex items-center gap-6">
