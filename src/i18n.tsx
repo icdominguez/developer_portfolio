@@ -22,7 +22,7 @@ const resources = {
                     scalability: "Scalability",
                 },
                 years_of_experience: "Years of experience",
-                apps_developed: "Apps developed",
+                apps_developed: "Completed projects",
                 apps_in_store: "Apps in store",
                 description: `I’m a mobile developer with <1> over 5 years of experience</1> building native Android applications, consistently working across backend systems throughout my career. 
                     
@@ -57,6 +57,16 @@ const resources = {
                     serban: "Implementation of biometric solutions for mobile and web environments, including voice, signature, and recognition systems. Cross-functional work on frontend and backend, with a focus on the integration and robustness of Android solutions.",
                 },
             },
+            projects: {
+                master_meme:
+                    "Master Meme is an app that allows you to quickly and easily create memes from predefined templates. You can drag and edit the text freely, adjusting the size, font, and color to achieve the perfect result. Once you've created your meme, you can export it to your device's memory or share it directly from the app on your social media and messaging apps.",
+                echo_journal:
+                    "Echo Journal is an audio journaling app that allows you to easily record and save voice memos. Each recording can be associated with a mood and personalized tags, making it easy to organize and filter your audio files later. In addition, during recording, the app automatically generates a description using AI transcription, making it much easier to review and search for your reflections.",
+                note_mark:
+                    "NoteMark is a mobile-first note-taking app designed to work completely offline. All your notes are stored locally, and you decide when they sync with the server: every 15 or 30 minutes, every hour, or manually. Each note has three different modes—view, edit, and read mode—that offer different ways to read and work with content, adapting to both writing and reading without distractions.",
+                lazy_pizza:
+                    "LazyPizza is an app for ordering pizza delivery quickly and easily. It displays a catalog of pizzas and toppings, along with a preferences section to customize delivery times. The app can be used as a guest or by logging in via SMS, allowing you to save an order history that can be viewed at any time.",
+            },
             download_resume: "Resume",
             greeting: "Hi I'm",
         },
@@ -81,7 +91,7 @@ const resources = {
                     scalability: "Escalabilidad",
                 },
                 years_of_experience: "Años de experiencia",
-                apps_developed: "Apps desarrolladas",
+                apps_developed: "Proyectos completados",
                 apps_in_store: "Apps en la tienda",
                 description: `Soy desarrollador móvil <1> con más de 5 años de experiencia</1> creando aplicaciones nativas para Android, trabajando consistentemente en sistemas backend durante toda mi carrera.
 
@@ -115,6 +125,16 @@ const resources = {
                     icp: "Desarrollo de aplicaciones móviles Android para el sector transporte y logística, orientadas a camioneros y apoyadas en funcionalidades del dispositivo como Google Maps, cámara y servicios de localización, participando en frontend y backend.",
                     serban: "Implementación de soluciones biométricas para entornos móviles y web, incluyendo sistemas de voz, firma y reconocimiento. Trabajo transversal en frontend y backend, con foco en la integración y robustez de las soluciones Android.",
                 },
+            },
+            projects: {
+                master_meme:
+                    "Master Meme es una app que te permite crear memes de forma rápida y sencilla a partir de plantillas predefinidas. Puedes arrastrar y editar el texto libremente, ajustando el tamaño, la tipografía y el color para conseguir el resultado perfecto. Una vez creado el meme, puedes exportarlo a la memoria de tu dispositivo o compartirlo directamente desde la app en tus redes y apps de mensajería.",
+                echo_journal:
+                    "Echo Journal es una app de journaling en formato de audio que te permite grabar y guardar notas de voz de forma sencilla. Cada grabación puede asociarse a un estado de ánimo (mood) y a etiquetas personalizadas, lo que facilita la organización y el filtrado posterior de los audios. Además, durante la grabación la app genera automáticamente una descripción gracias a la transcripción por IA, haciendo que revisar y buscar tus reflexiones sea mucho más cómodo.",
+                note_mark:
+                    "NoteMark es una aplicación de notas mobile-first diseñada para funcionar completamente sin conexión a internet. Todas tus notas se guardan de forma local y tú decides cuándo se sincronizan con el servidor: cada 15 o 30 minutos, cada hora o de manera manual. Cada nota cuenta con tres modos diferenciados —vista, edición y read mode— que ofrecen distintas formas de leer y trabajar el contenido, adaptándose tanto a la escritura como a la lectura sin distracciones.",
+                lazy_pizza:
+                    "LazyPizza es una app para pedir pizzas a domicilio de forma rápida y sin complicaciones. Muestra un catálogo de pizzas y complementos, junto con una sección de preferencias para personalizar el momento de la entrega. La app puede usarse como invitado o mediante inicio de sesión por SMS, lo que permite guardar un histórico de pedidos que se puede consultar en cualquier momento.",
             },
             download_resume: "Curriculum",
             greeting: "Hola, soy",
