@@ -59,8 +59,8 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Left Column */}
-                    <div className="w-full hidden md:flex h-full items-center justify-center">
+                    {/* Right Column */}
+                    <div className="w-full hidden md:flex h-full items-center justify-center pl-4">
                         <TerminalParallax3DEffect />
                     </div>
                 </div>

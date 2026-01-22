@@ -69,7 +69,7 @@ export default function Contact() {
                 parent="span"
             ></Trans>
 
-            <span className="text-center">
+            <span className="text-center px-4">
                 {t("contact.feel_free_to_reach_out")}
             </span>
 

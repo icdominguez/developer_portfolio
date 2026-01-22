@@ -8,6 +8,8 @@
     font-display: swap;
 }
 
+@custom-variant can-hover "@media (hover: hover) and (pointer: fine)";
+
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
 

@@ -67,7 +67,7 @@ export default function About() {
 
                     <div>
                         <div className="text-3xl md:text-4xl font-bold text-transparent bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text mb-1">
-                            6+
+                            7+
                         </div>
                         <div className="text-sm text-slate-600 dark:text-slate-400">
                             {t("about.apps_developed").toUpperCase()}
