@@ -7,11 +7,7 @@ export default function DownloadResumeButton() {
     const { language } = useSettings();
 
     function handleClick() {
-        const fileId =
-            language === LANGUAGES.es
-                ? "17ewbaEn5sv_eAczE5Hl1GMK1NutXY3Qm"
-                : "1JxAZUsugRaDX9UIK5rxnkNmfSqgKsoP2";
-        const resumeUrl = `https://drive.google.com/file/d/${fileId}/view?usp=drive_link`;
+        const resumeUrl = `https://icdominguez.ddns.net/dev/api/cv?lang=${language.code}`;
         window.open(resumeUrl, "_blank");
     }
 
