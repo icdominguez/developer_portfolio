@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SPRITE_URL } from "../../constants/paths";
 import { useTranslation, Trans } from "react-i18next";
 import { SectionTitle } from "../../components/SectionTitle";
+import { sendContact } from "../../services/contact.service";
+
+type Banner = { type: "success" | "error"; text: string } | null;
 
 export default function Contact() {
     const { t } = useTranslation();
@@ -16,6 +19,16 @@ export default function Contact() {
         message: "",
     });
 
+    const [isSending, setIsSending] = useState(false);
+    const [banner, setBanner] = useState<Banner>(null);
+
+    useEffect(() => {
+        if (!banner) return;
+
+        const id = window.setTimeout(() => setBanner(null), 3000);
+        return () => window.clearTimeout(id);
+    }, [banner]);
+
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
@@ -26,14 +39,34 @@ export default function Contact() {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        setIsSending(true);
         e.preventDefault();
-        console.log(formData);
-        setFormData({
-            name: "",
-            email: "",
-            message: "",
-        });
+
+        try {
+            console.log(`Sending data: ${formData}`);
+            const contactData = await sendContact(formData);
+            setBanner({
+                type: "success",
+                text: t("contact.email_request.success"),
+            });
+            setFormData({
+                name: "",
+                email: "",
+                message: "",
+            });
+            setTouched({
+                email: false,
+            });
+            console.log(`Succesfully sent the email: ${contactData}`);
+        } catch (error: any) {
+            setBanner({
+                type: "error",
+                text: t("contact.email_request.error"),
+            });
+        } finally {
+            setIsSending(false);
+        }
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -164,12 +197,29 @@ export default function Contact() {
                     className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-500 text-white font-medium rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                     disabled={isSubmitDisabled}
                 >
-                    <svg className="w-6 h-6">
-                        <use href={`${SPRITE_URL}#send-icon`} />
+                    <svg
+                        className={`w-6 h-6 ${isSending ? "animate-spin" : ""} fill="none" aria-hidden="true"`}
+                    >
+                        <use
+                            href={`${SPRITE_URL}#${isSending ? "loading-icon" : "send-icon"}`}
+                        />
                     </svg>
-                    {t("contact.send_message")}
+                    {t(
+                        `${isSending ? "contact.email_request.sending" : "contact.send_message"}`,
+                    )}
                 </button>
             </form>
+
+            {banner && (
+                <div className="fixed bottom-6 z-50">
+                    <div
+                        className={`px-6 py-4 rounded-xl shadow-2xl border backdrop-blur transition-all duration-300 ease-out" ${banner.type === "success" ? "bg-emerald-500/90 text-white border-emerald-400" : "bg-red-500/90 text-white border-red-400"}`}
+                        aria-live="polite"
+                    >
+                        {banner.text}
+                    </div>
+                </div>
+            )}
         </section>
     );
 }

@@ -43,6 +43,11 @@ const resources = {
                     "Feel free to reach out, I'm always open to connect!",
                 have_a_project_in_mind:
                     "Have a <1>project in mind</1>, or a <1>question</1>?",
+                email_request: {
+                    sending: "Sending email, please wait ...",
+                    success: "Email successfully sent ✅",
+                    error: "There was an error sending the email ❌",
+                },
             },
             experience: {
                 descriptions: {
@@ -112,6 +117,11 @@ const resources = {
                     "No dudes en ponerte en contacto conmigo, ¡siempre estoy dispuesto a conectar!",
                 have_a_project_in_mind:
                     "Tienes un <1>proyecto en mente</1>, o alguna <1>pregunta</1>?",
+                email_request: {
+                    sending: "Enviando email, espere ...",
+                    success: "Email enviado correctamente",
+                    error: "Ha habido un error enviando el email",
+                },
             },
             experience: {
                 descriptions: {
