@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
     push:
         branches:
-            - main
+            - feature/*
 jobs:
     deploy:
         runs-on: self-hosted
@@ -21,8 +21,10 @@ jobs:
             - name: Clean deployment directory
               run: |
                   echo "DELETING EVERYTHING in ~/deployments/portfolio..."
+                  shopt -s dotglob
                   rm -rf ~/deployments/portfolio/*
-                  echo "Directory completely removed!"
+                  shopt -u dotglob
+                  echo "All files removed!"
 
             - name: Copy new files
               run: |
@@ -39,6 +41,16 @@ jobs:
                   cd ~/deployments/portfolio
                   npm ci --production
                   echo "Dependencies installed!"
+
+            - name: Create .env file
+              run: |
+                  echo "Creating .env file..."
+                  cd ~/deployments/portfolio
+                  cat > .env << EOF
+                  VITE_SERVER_BASE_URL=${{ secrets.VITE_SERVER_BASE_URL }}
+                  VITE_UMAMI_WEBSITE_ID=${{ secrets.VITE_UMAMI_WEBSITE_ID }}
+                  EOF
+                  echo ".env file created!"
 
             - name: Build React application
               run: |
