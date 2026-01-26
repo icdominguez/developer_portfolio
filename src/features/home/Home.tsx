@@ -4,15 +4,18 @@ import TerminalParallax3DEffect from "./TerminalParallax3DEffect";
 import { SPRITE_URL } from "../../constants/paths";
 import SocialButton from "../../components/SocialButton";
 import DownloadResumeButton from "../../components/DownloadResumeButton";
+import { trackOutboundClick } from "../../analytics/umami";
 
 export default function Home() {
     const { t } = useTranslation();
 
     const handleGithubClick = () => {
+        trackOutboundClick("github");
         window.open("https://github.com/icdominguez", "_blank");
     };
 
     const handleLinkedinClick = () => {
+        trackOutboundClick("linkedin");
         window.open(
             "https://linkedin.com/in/ismael-cordon-dominguez/",
             "_blank",
@@ -43,7 +46,7 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-row gap-4 items-center">
-                            <DownloadResumeButton />
+                            <DownloadResumeButton location="home" />
 
                             <SocialButton
                                 icon={`${SPRITE_URL}#github-icon`}

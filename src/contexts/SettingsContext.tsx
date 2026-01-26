@@ -3,9 +3,11 @@ import {
     ReactNode,
     useContext,
     useEffect,
+    useRef,
     useState,
 } from "react";
 import { useTranslation } from "react-i18next";
+import { trackLanguageChange, trackThemeChange } from "../analytics/umami";
 
 type Theme = "light" | "dark";
 interface Language {
@@ -42,11 +44,13 @@ const getBrowserLanguage = (): Language => {
 };
 
 const SettingsContext = createContext<SettingsContextType | undefined>(
-    undefined
+    undefined,
 );
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
     const { i18n } = useTranslation();
+
+    const userInitiatedRef = useRef(false);
 
     const [theme, setTheme] = useState<Theme>(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -81,11 +85,18 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         i18n.changeLanguage(language.code);
     }, [language]);
 
+    useEffect(() => {
+        if (!userInitiatedRef.current) return;
+        userInitiatedRef.current = false;
+        trackThemeChange(theme);
+    }, [theme]);
+
     const toggleTheme = () => {
         setTheme((prev) => (prev === "light" ? "dark" : "light"));
     };
 
     const switchLanguage = (newLanguage: Language) => {
+        trackLanguageChange(newLanguage.code);
         setLanguage(newLanguage);
     };
 

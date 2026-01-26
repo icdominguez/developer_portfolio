@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { SPRITE_URL } from "../../constants/paths";
 import { Project } from "./types/Project";
+import { trackProjectSourCodeClick } from "../../analytics/umami";
 
 export default function ProjectItem({ project }: { project: Project }) {
     const { t } = useTranslation();
@@ -10,6 +11,7 @@ export default function ProjectItem({ project }: { project: Project }) {
             <div className="relative h-90 overflow-hidden">
                 <div className="absolute inset-0 z-10 flex items-end justify-end p-4">
                     <a
+                        onClick={() => trackProjectSourCodeClick(project.title)}
                         href={project.projectUrl}
                         className="pointer-events-auto flex items-center gap-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 dark:hover:bg-slate-700 hover:border-blue-500 rounded-xl px-4 py-2 text-sm font-semibold [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 hover:bg-white transition-all duration-300"
                         target="_blank"

@@ -1,12 +1,20 @@
 import { useTranslation } from "react-i18next";
 import { SPRITE_URL } from "../constants/paths";
-import { LANGUAGES, useSettings } from "../contexts/SettingsContext";
+import { useSettings } from "../contexts/SettingsContext";
+import { ResumeLocation, trackResumeDownloadClick } from "../analytics/umami";
 
-export default function DownloadResumeButton() {
+type DownloadResumeButtonProps = {
+    location: ResumeLocation;
+};
+
+export default function DownloadResumeButton({
+    location,
+}: DownloadResumeButtonProps) {
     const { t } = useTranslation();
     const { language } = useSettings();
 
     function handleClick() {
+        trackResumeDownloadClick(location);
         const resumeUrl = `https://icdominguez.ddns.net/dev/api/cv?lang=${language.code}`;
         window.open(resumeUrl, "_blank");
     }
