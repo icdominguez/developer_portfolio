@@ -3,6 +3,7 @@ import { SPRITE_URL } from "../../constants/paths";
 import { useTranslation, Trans } from "react-i18next";
 import { SectionTitle } from "../../components/SectionTitle";
 import { sendContact } from "../../services/contact.service";
+import { trackSendContactClick } from "../../analytics/umami";
 
 type Banner = { type: "success" | "error"; text: string } | null;
 
@@ -40,6 +41,7 @@ export default function Contact() {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
+        trackSendContactClick();
         setIsSending(true);
         e.preventDefault();
 

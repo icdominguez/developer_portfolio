@@ -14,7 +14,7 @@ export default function Experience() {
 
             <Timeline />
 
-            <DownloadResumeButton />
+            <DownloadResumeButton location="experience" />
         </section>
     );
 }
