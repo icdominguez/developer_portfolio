@@ -8,7 +8,9 @@
     font-display: swap;
 }
 
-@custom-variant can-hover "@media (hover: hover) and (pointer: fine)";
+section[id] {
+    scroll-margin-top: calc(var(--navbar-height, 0px));
+}
 
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
