@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChangeThemeButton from "./ChangeThemeButton";
 import DefaultButton from "./DefaultButton";
 import LanguageSelector from "./LanguageSelector/LanguageSelector";
@@ -6,9 +6,21 @@ import { useTranslation } from "react-i18next";
 import { SPRITE_URL } from "../constants/paths";
 
 export default function NavBar() {
+    const navRef = useRef<HTMLElement>(null);
     const [isMenuOpen, setMenuOpen] = useState(false);
 
     const { t } = useTranslation();
+
+    useEffect(() => {
+        if (navRef.current) {
+            const height = navRef.current.offsetHeight;
+            console.log(`Nav bar height: ${height}`);
+            document.documentElement.style.setProperty(
+                "--navbar-height",
+                `${height}px`,
+            );
+        }
+    }, []);
 
     const links = [
         { to: "home", label: t("nav.home") },
@@ -19,7 +31,10 @@ export default function NavBar() {
     ];
 
     return (
-        <nav className="sticky top-0 z-50 w-full pt-4 pb-4 bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50">
+        <nav
+            ref={navRef}
+            className="sticky top-0 z-50 w-full pt-4 pb-4 bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50"
+        >
             <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
                 {/* Name */}
 
@@ -28,15 +43,17 @@ export default function NavBar() {
                         <use href={`${SPRITE_URL}#terminal-icon`} />
                     </svg>
 
-                    <h1
-                        className="cursor-pointer text-xl font-bold 
+                    <a href={`#${links[0].to}`}>
+                        <h1
+                            className="cursor-pointer text-xl font-bold 
                     hover:underline hover:underline-offset-4 hover:decoration-blue-600"
-                    >
-                        <span className="bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent ">
-                            ICD
-                        </span>
-                        <span>OMINGUEZ</span>
-                    </h1>
+                        >
+                            <span className="bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent ">
+                                ICD
+                            </span>
+                            <span>OMINGUEZ</span>
+                        </h1>
+                    </a>
                 </div>
 
                 {/* Desktop Nav */}

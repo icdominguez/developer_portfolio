@@ -7,11 +7,11 @@ export default function ProjectItem({ project }: { project: Project }) {
 
     return (
         <div className="group relative bg-white dark:bg-slate-800/50 rounded-3xl overflow-hidden shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-700/50 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-500 hover:-translate-y-2">
-            <div className="relative h-70 overflow-hidden">
-                <div className="absolute inset-0 z-10 bg-linear-to-t from-black/70 via-black/30 to-transparent opacity-100 can-hover:opacity-0 transition-opacity duration-300 flex items-end justify-end p-4">
+            <div className="relative h-90 overflow-hidden">
+                <div className="absolute inset-0 z-10 flex items-end justify-end p-4">
                     <a
                         href={project.projectUrl}
-                        className="pointer-events-auto flex items-center gap-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 dark:hover:bg-slate-700 hover:border-blue-500 rounded-xl px-4 py-2 text-sm font-semibold hover:bg-white opacity-100 translate-y-0 can-hover:opacity-0 can-hover:translate-y-2 can-hover:group-hover:opacity-100 can-hover:group-hover:translate-0 transition-all duration-300"
+                        className="pointer-events-auto flex items-center gap-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 dark:hover:bg-slate-700 hover:border-blue-500 rounded-xl px-4 py-2 text-sm font-semibold [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 hover:bg-white transition-all duration-300"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -24,10 +24,14 @@ export default function ProjectItem({ project }: { project: Project }) {
                         </svg>
                     </a>
                 </div>
+
+                {/* Image container */}
                 <img
-                    className="w-full h-full object-cover transform transition-transform duration-500 ease-out can-hover:group-hover:scale-105"
+                    className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
                     src={project.imageUrl}
                 />
+
+                <div className="absolute inset-0 [@media(hover:none)]:bg-black/20 [@media(hover:hover)]:group-hover:bg-black/20 transition-all duration-300"></div>
             </div>
 
             <div className="p-6">
