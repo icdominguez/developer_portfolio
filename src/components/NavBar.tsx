@@ -14,7 +14,6 @@ export default function NavBar() {
     useEffect(() => {
         if (navRef.current) {
             const height = navRef.current.offsetHeight;
-            console.log(`Nav bar height: ${height}`);
             document.documentElement.style.setProperty(
                 "--navbar-height",
                 `${height}px`,
@@ -46,9 +45,9 @@ export default function NavBar() {
                     <a href={`#${links[0].to}`}>
                         <h1
                             className="cursor-pointer text-xl font-bold 
-                    hover:underline hover:underline-offset-4 hover:decoration-blue-600"
+                    hover:underline hover:underline-offset-4 hover:decoration-blue-600 xs:text-lg"
                         >
-                            <span className="bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent ">
+                            <span className="bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                                 ICD
                             </span>
                             <span>OMINGUEZ</span>
@@ -74,7 +73,7 @@ export default function NavBar() {
                 </div>
 
                 {/* Mobile buttons */}
-                <div className="md:hidden flex items-center gap-3">
+                <div className="md:hidden flex items-center gap-3 xs:gap-1">
                     <ChangeThemeButton />
 
                     <LanguageSelector />

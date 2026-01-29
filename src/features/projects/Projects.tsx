@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { SectionTitle } from "../../components/SectionTitle";
-import { Project } from "./types/Project";
-import ProjectItem from "./ProjectItem";
+import { ProjectItem } from "./types/ProjectItem";
+import ProjectItemView from "./ProjectItemView";
 import MasterMemeCover from "../../assets/projects/master_meme.png";
 import EchoJournalCover from "../../assets/projects/echo_journal.png";
 import NoteMarkCover from "../../assets/projects/note_mark.png";
@@ -10,7 +10,7 @@ import LazyPizzaCover from "../../assets/projects/lazy_pizza.png";
 export default function Projects() {
     const { t } = useTranslation();
 
-    const projects: Project[] = [
+    const projects: ProjectItem[] = [
         {
             title: "Lazy Pizza",
             description: "projects.lazy_pizza",
@@ -74,7 +74,7 @@ export default function Projects() {
 
             <div className="grid md:grid-cols-2 px-4 lg:px-12 gap-4">
                 {projects.map((project, index) => (
-                    <ProjectItem key={index} project={project} />
+                    <ProjectItemView key={index} project={project} />
                 ))}
             </div>
         </section>

@@ -46,7 +46,6 @@ export default function Contact() {
         e.preventDefault();
 
         try {
-            console.log(`Sending data: ${formData}`);
             const contactData = await sendContact(formData);
             setBanner({
                 type: "success",
@@ -60,7 +59,6 @@ export default function Contact() {
             setTouched({
                 email: false,
             });
-            console.log(`Succesfully sent the email: ${contactData}`);
         } catch (error: any) {
             setBanner({
                 type: "error",

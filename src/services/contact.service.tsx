@@ -12,6 +12,5 @@ export type ContactResponse = {
 
 export async function sendContact(payload: ContactPayload) {
     const res = await ApiClient.post<ContactResponse>("/contact", payload);
-    console.log("URL llamada:", res.request?.responseURL);
     return res.data;
 }

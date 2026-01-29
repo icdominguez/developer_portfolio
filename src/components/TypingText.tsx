@@ -37,7 +37,7 @@ export default function TypingText() {
     }, [displayText, isDeleting, textIndex]);
 
     return (
-        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight min-h-20 md:min-h-25">
+        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight min-h-20 md:min-h-25 text-center">
             <span className="bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 {displayText}
             </span>
