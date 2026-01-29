@@ -36,7 +36,7 @@ export default function About() {
                                 <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl shadow-slate-300/20 dark:shadow-blue-900/20">
                                     <img
                                         src={profileImage}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-cover object-[center_20%]"
                                     />
                                 </div>
                                 <div className="absolute inset-0 bg-linear-to-t from-slate-900/10 dark:from-slate-950/40 to-transparent rounded-2xl"></div>
