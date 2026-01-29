@@ -65,20 +65,6 @@ export default function TerminalParallax3DEffect() {
                             </div>
                             <div className="ml-4">
                                 <span className="text-terminal-blue">
-                                    skills ={" "}
-                                </span>
-                                <span className="italic text-white">
-                                    listOf(
-                                </span>
-                                <span className="text-terminal-green">
-                                    "Kotlin", "Swift", "NodeJS", "Typescript",
-                                    "PostgreSQL"
-                                </span>
-                                <span className="text-white">)</span>
-                                <span className="text-white">,</span>
-                            </div>
-                            <div className="ml-4">
-                                <span className="text-terminal-blue">
                                     focuses ={" "}
                                 </span>
                                 <span className="italic text-white">
@@ -92,11 +78,17 @@ export default function TerminalParallax3DEffect() {
                             </div>
                             <div className="ml-4">
                                 <span className="text-terminal-blue">
-                                    learning ={" "}
+                                    skills ={" "}
+                                </span>
+                                <span className="italic text-white">
+                                    listOf(
                                 </span>
                                 <span className="text-terminal-green">
-                                    "Always"
+                                    "Kotlin", "Swift", "NodeJS", "Typescript",
+                                    "PostgreSQL", "CI/CD", "Git"
                                 </span>
+                                <span className="text-white">)</span>
+                                <span className="text-white">,</span>
                             </div>
                             <div>
                                 <span className="text-white">)</span>

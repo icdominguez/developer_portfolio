@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Texto ICD con gradiente, fondo transparente -->
+  <text
+    x="128"
+    y="162"
+    text-anchor="middle"
+    font-size="120"
+    font-weight="800"
+    letter-spacing="4"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial"
+    fill="url(#g)">
+    ICD
+  </text>
+</svg>

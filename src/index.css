@@ -20,6 +20,8 @@ section[id] {
     --color-terminal-green: #608768;
     --color-terminal-orange: #af7c66;
 
+    --breakpoint-xs: 360px;
+
     --animate-wave: wave 6s ease-in-out infinite;
     --animate-marquee: marquee 20s linear infinite reverse;
 
