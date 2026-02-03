@@ -267,7 +267,7 @@ export default function Timeline() {
     ];
 
     return (
-        <div className="container mx-auto px-4 sm:px-0">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
             {experiences.map((item, index) => (
                 <div key={index}>
                     <TimelineItem item={item} />

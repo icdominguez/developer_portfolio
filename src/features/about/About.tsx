@@ -21,7 +21,7 @@ export default function About() {
                                         i18nKey="about.description"
                                         components={{
                                             1: (
-                                                <span className="text-slate-900 dark:text-white font-semibold" />
+                                                <span className="text-blue-600 dark:text-blue-400 font-semibold" />
                                             ),
                                         }}
                                         parent="span"
