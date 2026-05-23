@@ -33,7 +33,6 @@ export default function BlogPostPage() {
 
     useEffect(() => {
         const fetchPost = async () => {
-            console.log(`Fetching post: ...${slug}`);
             if (!slug) {
                 setError(true);
                 setLoading(false);
@@ -43,7 +42,7 @@ export default function BlogPostPage() {
             try {
                 setLoading(true);
                 setError(false);
-                const fetchedPost = await getPostBySlug(slug);
+                const fetchedPost = await getPostBySlug(slug, language.code);
                 setPost(fetchedPost);
             } catch (error) {
                 console.error("Failed to fetch post:", error);
@@ -54,7 +53,7 @@ export default function BlogPostPage() {
         };
 
         fetchPost();
-    }, [slug]);
+    }, [slug, language]);
 
     if (loading) {
         return (
