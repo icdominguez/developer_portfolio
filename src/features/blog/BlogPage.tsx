@@ -7,6 +7,7 @@ import { ComingSoon } from "../../components/ComingSoon";
 import { Trans, useTranslation } from "react-i18next";
 import { getPosts } from "../../services/contact.service";
 import { Post } from "../../models/Post";
+import { useSettings } from "../../contexts/SettingsContext";
 
 type Filter = "All" | BlogTag;
 
@@ -17,6 +18,7 @@ const POSTS_PER_PAGE = 20;
 
 export default function BlogPage() {
     const { t } = useTranslation();
+    const { language } = useSettings();
     const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
     const [activeFilter, setActiveFilter] = useState<Filter>("All");
@@ -27,7 +29,7 @@ export default function BlogPage() {
         const fetchPosts = async () => {
             try {
                 setLoading(true);
-                const result = await getPosts();
+                const result = await getPosts(language.code);
                 setPosts(result.posts);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);
@@ -37,7 +39,7 @@ export default function BlogPage() {
         };
 
         fetchPosts();
-    }, []);
+    }, [language]);
 
     const isSearchActive = searchQuery.trim().length >= 3;
 

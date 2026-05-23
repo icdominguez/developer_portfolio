@@ -13,13 +13,17 @@ const tagConfig: Record<BlogTag, { classes: string }> = {
         classes:
             "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
     },
-    IA: {
+    AI: {
         classes:
             "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     },
 };
 
-export default function BlogPostCard({ post }: { post: BlogPost }) {
+interface BlogPostCardProps {
+    post: BlogPost;
+}
+
+export default function BlogPostCard({ post }: BlogPostCardProps) {
     const { language } = useSettings();
     const tag = tagConfig[post.tag as BlogTag];
 
@@ -38,7 +42,9 @@ export default function BlogPostCard({ post }: { post: BlogPost }) {
                     <svg className="w-4 h-4 shrink-0">
                         <use href={`${SPRITE_URL}#calendar-icon`} />
                     </svg>
-                    <span className="leading-none">{formatDateToLong(post.publishedAt, language.code)}</span>
+                    <span className="leading-none">
+                        {formatDateToLong(post.publishedAt, language.code)}
+                    </span>
                 </span>
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">

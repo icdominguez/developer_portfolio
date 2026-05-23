@@ -54,7 +54,6 @@ export interface GetPostsResult {
 }
 
 const mapApiPostToPost = (apiPost: ApiPost): Post => {
-    console.log(`Mapping post: ...${apiPost}`);
     return {
         title: apiPost.title,
         description: apiPost.description,
@@ -66,19 +65,23 @@ const mapApiPostToPost = (apiPost: ApiPost): Post => {
     };
 };
 
-export const getPosts = async (): Promise<GetPostsResult> => {
-    const response = await ApiClient.get<ApiResponse<PaginatedResponse<ApiPost>>>(
-        ENDPOINTS.POSTS,
-    );
+export const getPosts = async (language: string): Promise<GetPostsResult> => {
+    const response = await ApiClient.get<
+        ApiResponse<PaginatedResponse<ApiPost>>
+    >(ENDPOINTS.POSTS, { params: { language } });
     return {
         posts: response.data.data.data.map(mapApiPostToPost),
         total: response.data.data.meta.total,
     };
 };
 
-export const getPostBySlug = async (slug: string): Promise<Post> => {
+export const getPostBySlug = async (
+    slug: string,
+    language: string,
+): Promise<Post> => {
     const response = await ApiClient.get<ApiResponse<ApiPost>>(
         ENDPOINTS.POST_BY_SLUG(slug),
+        { params: { language } },
     );
     return mapApiPostToPost(response.data.data);
 };
