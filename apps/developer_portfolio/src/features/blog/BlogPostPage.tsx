@@ -6,6 +6,7 @@ import { Post } from "../../models/Post";
 import { formatDateToLong } from "../utils/date.utils";
 import { useSettings } from "../../contexts/SettingsContext";
 import { useTranslation } from "react-i18next";
+import { BlogContent } from "@ismael-cordon/blog-shared";
 
 const tagConfig: Record<BlogTag, { classes: string }> = {
     Android: {
@@ -112,10 +113,12 @@ export default function BlogPostPage() {
                     {post.description}
                 </p>
 
-                <div
+                {/*<div
                     className="blog-content mt-10 prose prose-slate dark:prose-invert max-w-none"
                     dangerouslySetInnerHTML={{ __html: post.content }}
-                ></div>
+                ></div>*/}
+
+                <BlogContent content={post.content} />
             </div>
         </div>
     );

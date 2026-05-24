@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+.tiptap-editor {
+    outline: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.tiptap ol {
+    @apply pl-4 my-2;
+    counter-reset: item;
+    list-style-type: none;
+}
+
+.tiptap ol>li {
+    counter-increment: item;
+}
+
+.tiptap ol>li>p::before {
+    content: counters(item, ".") ". ";
+}
+
+.tiptap-editor ul {
+    @apply pl-9 my-2;
+    list-style-type: disc;
+}
+
+.tiptap-editor ul ul {
+    list-style-type: circle;
+}
+
+.tiptap-editor ul ul ul {
+    list-style-type: square;
+}
+
+.tiptap-editor h1 {
+    @apply text-3xl text-slate-100 font-bold mt-6 mb-4;
+}
+
+.tiptap-editor h2 {
+    @apply text-2xl font-semibold text-slate-100 mt-5 mb-3;
+}
+
+.tiptap-editor h3 {
+    @apply text-xl font-semibold text-slate-100 mt-4 mb-2;
+}
+
+.tiptap-editor p {
+    @apply text-white;
+}
+
+.tiptap-editor hr {
+    @apply my-8 border-t-1 border-solid border-slate-300 dark:border-slate-700;
+}
+
+.tiptap-editor p:has(img) {
+    text-align: center;
+}
+
+.tiptap-editor p>div:has(img) {
+    display: inline-block !important;
+    float: none !important;
+    vertical-align: middle !important;
+    margin: 0.5rem !important;
+}
+
+.tiptap-editor p.is-editor-empty:first-child::before {
+    @apply text-slate-600;
+    content: attr(data-placeholder);
+    /* color: #a1a1aa; */
+    pointer-events: none;
+    float: left;
+    height: 0;
+}
+
+.tiptap-editor blockquote {
+    @apply my-4 pl-4 py-3 border-l-4 rounded-r-lg italic bg-slate-800 text-slate-300 border-s-2 border-blue-600;
+}
+
+.tiptap-editor blockquote p {
+    @apply m-0 px-2 text-slate-300 text-base;
+}
+
+.tiptap-editor blockquote {
+    padding: 0.5rem !important;
+}
+
+.tiptap-editor blockquote p::before,
+.tiptap-editor blockquote p::after {
+    @apply p-0 text-slate-300;
+}
+
+.tiptap-editor ul,
+.tiptap-editor ol {
+    @apply text-slate-300;
+}
+
+.tiptap pre {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.tiptap-editor pre {
+    background: #1e293b !important;
+}
+
+.tiptap-editor pre code {
+    @apply text-sm;
+}
