@@ -11,47 +11,98 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
+              with:
+                  fetch-depth: 2
 
-            - name: Log - Starting deployment
+            - name: Detect changes
+              id: changes
               run: |
-                  echo "=========================================="
-                  echo "Starting deployment for branch: ${{ github.ref_name }}"
-                  echo "=========================================="
+                  if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+                    echo "portfolio=true" >> $GITHUB_OUTPUT
+                    echo "blog=true" >> $GITHUB_OUTPUT
+                  else
+                    CHANGED=$(git diff --name-only HEAD~1 HEAD)
+                      echo "$CHANGED"
 
-            - name: Clean deployment directory
+                    if echo "$CHANGED" | grep -q "^apps/developer_portfolio/\|^packages/blog-shared/"; then
+                      echo "portfolio=true" >> $GITHUB_OUTPUT
+                    else
+                      echo "portfolio=false" >> $GITHUB_OUTPUT
+                    fi
+
+                    if echo "$CHANGED" | grep -q "^apps/blog_editor/\|^packages/blog-shared/"; then
+                      echo "blog=true" >> $GITHUB_OUTPUT
+                    else
+                      echo "blog=false" >> $GITHUB_OUTPUT
+                    fi
+                  fi
+
+            - name: Create .env for portfolio
+              if: steps.changes.outputs.portfolio == 'true'
               run: |
-                  echo "DELETING EVERYTHING in ~/deployments/portfolio..."
-                  rm -rf ~/deployments/portfolio/*
-                  echo "Directory completely removed!"
+                  cat > apps/developer_portfolio/.env << EOF
+                  VITE_SERVER_BASE_URL=${{ secrets.VITE_SERVER_BASE_URL }}
+                  VITE_UMAMI_WEBSITE_ID=${{ secrets.VITE_UMAMI_WEBSITE_ID }}
+                  EOF
 
-            - name: Copy new files
+            - name: Create .env for blog editor
+              if: steps.changes.outputs.blog == 'true'
               run: |
-                  echo "Copying new files from $GITHUB_WORKSPACE..."
-                  rsync -av --exclude='.git' --exclude='node_modules' --exclude='.github' \
-                    $GITHUB_WORKSPACE/ ~/deployments/portfolio/
-                  echo "Files copied successfully!"
-                  echo "Contents:"
-                  ls -la ~/deployments/portfolio/
+                  cat > apps/blog_editor/.env << EOF
+                  VITE_PORTFOLIO_API_KEY=${{ secrets.VITE_PORTFOLIO_API_KEY }}
+                  VITE_SERVER_BASE_URL=${{ secrets.VITE_SERVER_BASE_URL }}
+                  EOF
 
-            - name: Install dependencies from scratch
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: latest
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Build blog-shared
+              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.blog == 'true'
+              run: pnpm --filter @ismael-cordon/blog-shared build
+
+            - name: Build and deploy portfolio
+              if: steps.changes.outputs.portfolio == 'true'
               run: |
-                  echo "Installing dependencies from scratch..."
-                  cd ~/deployments/portfolio
-                  npm ci --production
-                  echo "Dependencies installed!"
+                  pnpm --filter developer_portfolio build
+                  rm -rf ~/deployments/developer_portfolio/*
+                  cp -r apps/developer_portfolio/dist/* ~/deployments/portfolio/
+                  echo "✅ Portfolio deployed!"
 
-            - name: Build React application
+            - name: Build and deploy blog editor
+              if: steps.changes.outputs.blog == 'true'
               run: |
-                  echo "Building React application for production..."
-                  cd ~/deployments/portfolio
-                  npm install vite --save-dev --no-save
-                  npm run build
-                  echo "Build completed!"
+                  pnpm --filter blog_editor build
+                  rm -rf ~/deployments/blog_editor/*
+                  cp -r apps/blog_editor/dist/* ~/deployments/blog_editor/
+                  echo "✅ Blog editor deployed!"
 
-            - name: Log - Deployment completed
+            - name: Notify Telegram
+              if: success()
+              run: |
+                  MESSAGE="✅ Deployment completed successfully!%0A"
+                  MESSAGE+="Branch: ${{ github.ref_name }}%0A"
+                  MESSAGE+="Commit: ${{ github.sha }}"
+                  curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+                    -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+                    -d text="$MESSAGE"
+
+            - name: Notify Telegram on failure
+              if: failure()
+              run: |
+                  MESSAGE="❌ Deployment FAILED!%0A"
+                  MESSAGE+="Branch: ${{ github.ref_name }}%0A"
+                  MESSAGE+="Commit: ${{ github.sha }}"
+                  curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+                    -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+                    -d text="$MESSAGE"
+
+            - name: Log
               run: |
                   echo "=========================================="
                   echo "✅ DEPLOYMENT COMPLETED"
-                  echo "📦 Files at: ~/deployments/portfolio/dist"
-                  echo "🌐 Live at: https://icdominguez.ddns.net/"
                   echo "=========================================="

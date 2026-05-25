@@ -12,8 +12,6 @@ import { useSettings } from "../../contexts/SettingsContext";
 type Filter = "All" | BlogTag;
 
 const filters: Filter[] = ["All", "Android", "iOS", "AI"];
-
-const isBlogDone = false;
 const POSTS_PER_PAGE = 20;
 
 export default function BlogPage() {
@@ -92,7 +90,7 @@ export default function BlogPage() {
                     </p>
                 </div>
 
-                {!isBlogDone ? (
+                {posts.length === 0 ? (
                     <ComingSoon t={t} />
                 ) : (
                     <>
