@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../../../packages/blog-shared/src";
 
 @font-face {
     font-family: "Inter";
@@ -75,7 +76,7 @@ section[id] {
     }
 }
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
     @apply scroll-smooth bg-white;
