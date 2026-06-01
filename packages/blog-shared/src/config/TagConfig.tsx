@@ -21,4 +21,8 @@ export const tagConfig: Record<BlogTag, { classes: string }> = {
         classes:
             "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
     },
+    Backend: {
+        classes:
+            "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
+    },
 };
