@@ -1,1 +1,7 @@
-export type BlogTag = "Android" | "iOS" | "AI" | "Dev life" | "Community";
+export type BlogTag =
+    | "Android"
+    | "iOS"
+    | "AI"
+    | "Dev life"
+    | "Community"
+    | "Backend";
